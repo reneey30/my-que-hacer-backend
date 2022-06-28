@@ -1,0 +1,13 @@
+# specify which database and adapter to use for which environment
+
+development:
+  adapter: sqlite3
+  database: db/que-hacer.sqlite3
+
+test:
+  adapter: sqlite3
+  database: db/que-hacer-test.sqlite3
+
+production:
+  adapter: sqlite3
+  database: db/que-hacer-prod.sqlite3
