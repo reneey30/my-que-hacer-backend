@@ -5,7 +5,7 @@ get '/' do
     @res = "root page"
 end
 
-get '/:user_id' do
+get 'todos/:user_id' do
     #get all todos of user_id = :user_id
     #table: todos table
     @res = "method: get /id. route id is #{params[:user_id]}"
