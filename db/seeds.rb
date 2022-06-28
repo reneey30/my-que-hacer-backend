@@ -60,5 +60,15 @@ end
 
 todos = Todo.all
 
+user1_todos = User.find(id1[:id])
+todos1 = user1_todos.to_json(include: [:todos])
+
+todos2 = Todo.where(:user_id => id2[:id]).to_json
+# todos2 = todos21.to_json
+
 puts "created todos.. #{todos}"
+puts "user1 todos.. #{todos1}"
+puts "user2 todos.. #{todos2}"
+
+puts
 
