@@ -60,5 +60,22 @@ class ApplicationController < Sinatra::Base
         user_id: params[:user_id]
       )
   end
+  get "/users" do
+    User.all.to_json(include: [:todos])
+end
+
+get "/users/random" do
+user = User.random
+user.to_json(include: [:todos])
+end
+
+post "/users" do
+  new_user = User.create(
+          user: params[:users],
+          user: params[:user]
+      )
+  new_user.to_json(include: [:todos])
+  end
+
 end
   
