@@ -11,10 +11,10 @@ class UsersController < ApplicationController
         User.all.to_json(include: [:todos])
     end
 
-    get "/users/random" do
-    user = User.random
-    user.to_json(include: [:todos])
-    end
+    # get "/users/random" do
+    # user = User.random
+    # user.to_json(include: [:todos])
+    # end
 
     post "/users" do
     new_user = User.create(
