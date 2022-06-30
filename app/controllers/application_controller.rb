@@ -65,7 +65,7 @@ class ApplicationController < Sinatra::Base
       if db_password == params[:password]
         # check if passwords match
 
-        msg = {:success => "Signed in #{params[:username] }successfully", :user_id => check_user[:id]} 
+        msg = {:success => "Signed in #{params[:username] } successfully", :user_id => check_user[:id]} 
         @res = msg.to_json
       else
         msg = {:signin_error => "Incorrect password!"}
