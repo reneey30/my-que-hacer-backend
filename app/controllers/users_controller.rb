@@ -21,7 +21,7 @@ class UsersController < ApplicationController
             user: params[:users],
             user: params[:user]
         )
-    new_user.to_json(include: [:todos])
+    new_user.to_json
     end
 
 end
