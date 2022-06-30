@@ -12,6 +12,5 @@ end
 use Rack::JSONBodyParser
 
 # Our application
-# use TodosController
-# use UsersController
+
 run ApplicationController

@@ -5,6 +5,10 @@ class ApplicationController < Sinatra::Base
     @res = "root page"
   end
 
+  #
+  # Routes dealing with Todo table
+  #
+
   get '/todos/:user_id' do
     #get all todos of user_id = :user_id
     #table: todos table
@@ -46,6 +50,10 @@ class ApplicationController < Sinatra::Base
       user_id: params[:user_id]
     )
   end
+
+  #
+  # Routes dealing with User table and authentication
+  #
 
   post "/signin" do
 
