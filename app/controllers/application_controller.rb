@@ -48,7 +48,27 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/signin" do
-      User.all.to_json
+
+    if User.exists?(username: params[:username])
+
+      check_user = User.find_by_username(params[:username])
+      db_password = check_user[:password]
+
+      if db_password == params[:password]
+        # check if passwords match
+
+        msg = {:success => "Signed in successfully"} 
+        @res = msg.to_json
+      else
+        msg = {:signin_error => "Incorrect password!"}
+        @res = msg.to_json
+      end
+      
+    else
+      msg = {:signin_error => "username: #{params[:username]} does not exists. Sign up instead"}
+      @res = msg.to_json
+    end
+
   end
 
   post "/signup" do
@@ -61,7 +81,7 @@ class ApplicationController < Sinatra::Base
       msg = {:success => "user #{params[:username]} created successfully"} 
       @res = msg.to_json
     else
-      msg = {:signup_error => "username exists."}
+      msg = {:signup_error => "username: #{params[:username]} exists."}
       @res = msg.to_json
     end
     

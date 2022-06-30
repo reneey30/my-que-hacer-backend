@@ -31,7 +31,7 @@ user2 = User.create(
 id1 = User.find_by_username("irene")
 id2 = User.where(:username => "njeru").first
 
-puts "created user #{user1} with id: #{id1[:id]}"
+puts "created user #{user1} with id: #{id1[:id]} and username: #{id1[:username]} and password: #{id1[:password]}"
 puts "created user #{user2} with id: #{id2[:id]}"
 
 def generate_code(number)
