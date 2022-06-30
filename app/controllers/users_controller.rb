@@ -16,12 +16,6 @@ class UsersController < ApplicationController
     # user.to_json(include: [:todos])
     # end
 
-    post "/users" do
-    new_user = User.create(
-            user: params[:users],
-            user: params[:user]
-        )
-    new_user.to_json
-    end
+    
 
 end
