@@ -53,11 +53,18 @@ class ApplicationController < Sinatra::Base
 
   post "/signup" do
     
-    new_user = User.create(
+    unless User.exists?(username: params[:username])
+      new_user = User.create(
           username: params[:username],
           password: params[:password]
         )
-    new_user.to_json
+      msg = {:success => "user #{params[:username]} created successfully"} 
+      @res = msg.to_json
+    else
+      msg = {:signup_error => "username exists."}
+      @res = msg.to_json
+    end
+    
   end
 
 end
