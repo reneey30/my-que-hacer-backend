@@ -24,8 +24,6 @@ class ApplicationController < Sinatra::Base
       end
 
     }
-    
-
   end
 
   delete '/delete/:todo_id' do
@@ -49,16 +47,17 @@ class ApplicationController < Sinatra::Base
     )
   end
 
-get "/users" do
-    User.all.to_json
-end
+  post "/signin" do
+      User.all.to_json
+  end
 
-post "/users" do
-  new_user = User.create(
-          user: params[:users],
-          user: params[:user]
-      )
-  new_user.to_json(include: [:todos])
+  post "/signup" do
+    
+    new_user = User.create(
+          username: params[:username],
+          password: params[:password]
+        )
+    new_user.to_json
   end
 
 end
