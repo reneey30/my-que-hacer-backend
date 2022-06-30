@@ -48,7 +48,7 @@ class ApplicationController < Sinatra::Base
     todo.to_json
   end
 
-  post '/create/' do
+  post '/create' do
       #create a new todo with details sent by user
       # @res = "method: post create/"
 
