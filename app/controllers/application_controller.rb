@@ -14,29 +14,17 @@ class ApplicationController < Sinatra::Base
   end
 
   patch '/update/:todo_id' do
-      #update todo with todo_id = :todo_id with data sent by user
-      # @res = "method: put update/id. route id is #{params}"
 
     todo = Todo.find(params[:todo_id])
-    
-    # a = ""
+  
     params.each {|key,value|
-      # if key == "todo_id"
-      #   pass
-      # else
-      #   todo.update(key: value)
-      # end
-      # a += "this key is #{key} and value is #{value} "
+      
       unless key == "todo_id"
-        # a += "key is #{key} and value is #{value} and todo is #{todo[:title]}"
         todo.update("#{key}": "#{value}")
       end
 
     }
     
-    a
-    # # todo.update_attributes(params)
-    # a = params
 
   end
 
@@ -49,24 +37,20 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/create' do
-      #create a new todo with details sent by user
-      # @res = "method: post create/"
+    #create a new todo with details sent by user
+    # @res = "method: post create/"
 
-      new_todo = Todo.create(
-        title: params[:title],
-        done: params[:done],
-        urgent: params[:urgent],
-        important: params[:important],
-        user_id: params[:user_id]
-      )
+    new_todo = Todo.create(
+      title: params[:title],
+      done: params[:done],
+      urgent: params[:urgent],
+      important: params[:important],
+      user_id: params[:user_id]
+    )
   end
-  get "/users" do
-    User.all.to_json(include: [:todos])
-end
 
-get "/users/random" do
-user = User.random
-user.to_json(include: [:todos])
+get "/users" do
+    User.all.to_json
 end
 
 post "/users" do
