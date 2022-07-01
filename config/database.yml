@@ -1,17 +1,19 @@
-# specify which database and adapter to use for which environment
-# default: &default
-#   adapter: postgresql
-#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   timeout: 5000
+#   Ensure the posgresql gem is defined in your Gemfile
+#   gem 'pg'
+
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
-  adapter: sqlite3
-  database: db/que-hacer.sqlite3
+  <<: *default
+  url: "postgresql://postgres:postgres@localhost:5432/todo"
 
 test:
-  adapter: sqlite3
-  database: db/que-hacer-test.sqlite3
+  <<: *default
+  url: "postgresql://postgres:postgres@localhost:5432/test_todo"
 
 production:
-  adapter: sqlite3
-  database: db/que-hacer-prod.sqlite3
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
