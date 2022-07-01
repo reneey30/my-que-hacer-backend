@@ -23,3 +23,5 @@ gem "rake", "~> 13.0"
 # A fast and simple web server
 # https://github.com/macournoyer/thin
 gem "thin", "~> 1.8"
+
+gem 'pg'
