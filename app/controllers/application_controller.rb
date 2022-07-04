@@ -2,7 +2,8 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
   get '/' do
-    @res = "root page"
+    # @res = "root page"
+    return Todo.all.to_json
   end
 
   #
